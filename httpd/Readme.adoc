@@ -23,3 +23,22 @@ Accessing the sample page from this container via http://localhost:8080 .
 . creating image with mounted cusomized httpd.conf
 
     docker run -dit --name apache-hello-world -p 8080:80 -v "$PWD/htdocs":/usr/local/apache2/htdocs/ -v "$PWD/conf/httpd.conf":/usr/local/apache2/conf/httpd.conf httpd:2.4
+
+== Running httpd with docker compose
+
+start and stop with compose
+
+    docker-compose up -d 
+    docker-compose down
+
+generating self-signed certificate, see also https://www.sslshopper.com/article-most-common-openssl-commands.html[SSL-Howto]
+
+    [openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout conf/server.key -out conf/server.crt
+
+accessing the container with https via https://localhost:8443
+
+.docker-compse.yml
+[source,yml]
+----
+include::docker-compose.yml[]
+----
