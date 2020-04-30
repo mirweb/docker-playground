@@ -66,8 +66,22 @@ Steps
 
     openssl req -new -key conf/server.key -out conf/server.csr
 
-. generate a config file via copy the template example.ext to server.ext and adjust 
+. generate a config file via copy the template example.ext to server.ext and adjust DNS and/or IP to get all necessary https://en.wikipedia.org/wiki/Subject_Alternative_Name[Subject Alternative Name]
 . signing the CSR with the CA
 
     openssl x509 -req -in conf/server.csr -CA ~/myCA/myCA.pem -CAkey ~/myCA/myCA.key -CAcreateserial -out conf/server.crt -days 365 -sha256 -extfile server.ext
+
+Check results
+
+- Check a Certificate Signing Request (CSR)
+
+    openssl req -text -noout -verify -in conf/server.csr
+
+. Check a private key
+
+    openssl rsa -in conf/server.key -check
+
+. Check a certificate
+
+    openssl x509 -in certificate.crt -text -noout
 
