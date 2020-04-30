@@ -1,0 +1,25 @@
+= Simple Hello World
+
+Using default https://hub.docker.com/_/httpd[http image] from docker hub. 
+
+Create and start container with name apache-hello-world
+
+    docker run -dit --name apache-hello-world -p 8080:80 -v "$PWD/htdocs":/usr/local/apache2/htdocs/ httpd:2.4
+
+Showing the logs, stopping and starting apache-hello-world container.
+
+    docker logs -f apache-hello-world 
+    docker stop apache-hello-world 
+    docker start apache-hello-world
+
+Accessing the sample page from this container via http://localhost:8080 .
+
+== customizing the default httpd.conf
+
+. extract the default httpd.conf out of the image
+
+    $ docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > conf/httpd.conf
+
+. creating image with mounted cusomized httpd.conf
+
+    docker run -dit --name apache-hello-world -p 8080:80 -v "$PWD/htdocs":/usr/local/apache2/htdocs/ -v "$PWD/conf/httpd.conf":/usr/local/apache2/conf/httpd.conf httpd:2.4
