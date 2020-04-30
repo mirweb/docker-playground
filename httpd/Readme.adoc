@@ -42,3 +42,32 @@ accessing the container with https via https://localhost:8443
 ----
 include::docker-compose.yml[]
 ----
+
+== generating your own CA and singing certificate
+
+Infos
+
+- https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/[How to Create Your Own SSL Certificate Authority for Local HTTPS Development]
+- https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs[OpenSSL Essentials: Working with SSL Certificates, Private Keys and CSRs]
+
+Steps
+
+. create CA
+
+    openssl genrsa -des3 -out myCA.key 2048
+    openssl req -x509 -new -nodes -key myCA.key -sha256 -days 1825 -out myCA.pem
+
+. install myCA.pem into your browser ca settings
+. generate server key
+
+    openssl genrsa -out conf/server.key 2048
+
+. generate CSR for the server key
+
+    openssl req -new -key conf/server.key -out conf/server.csr
+
+. generate a config file via copy the template example.ext to server.ext and adjust 
+. signing the CSR with the CA
+
+    openssl x509 -req -in conf/server.csr -CA ~/myCA/myCA.pem -CAkey ~/myCA/myCA.key -CAcreateserial -out conf/server.crt -days 365 -sha256 -extfile server.ext
+
