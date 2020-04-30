@@ -1,1 +1,5 @@
 .DS_Store
+httpd/conf/server.key
+httpd/conf/server.crt
+httpd/conf/server.csr
+httpd/server.ext
