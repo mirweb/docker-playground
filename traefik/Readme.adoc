@@ -1,0 +1,29 @@
+= Quick start
+
+.simple docker-compose.yml
+[source,yml]
+----
+include::docker-compose.yml[lines=1..16]
+----
+
+- starting traefik
+
+    docker-compose up -d reverse-proxy
+
+- adding simple http service whoami to docker-compose file
+
+.whoami service definition
+[source,yml]
+----
+include::docker-compose.yml[lines=18..23]
+----
+
+- starting whoami 
+
+    docker-compose -d up whoami
+
+- starting two instances of service whoami
+
+    docker-compose -d --scale whoami=2
+
+- access via http://localhost/whoami
