@@ -77,11 +77,29 @@ Check results
 
     openssl req -text -noout -verify -in conf/server.csr
 
-. Check a private key
-
+- Check a private key
+ 
     openssl rsa -in conf/server.key -check
 
-. Check a certificate
+- Check a certificate
 
     openssl x509 -in certificate.crt -text -noout
 
+== second example of generating key and csr 
+
+Infos
+
+-  https://www.endpoint.com/blog/2014/10/30/openssl-csr-with-alternative-names-one[OpenSSL CSR with Alternative Names one-line]
+
+- generating key and csr with config file in one command
+
+    openssl req -new -sha256 -nodes -out example2.csr -newkey rsa:2048 -keyout example2.key -config example2.ext
+
+- singing request with CA
+
+    openssl x509 -req -in example2.csr -CA ~/myCA/myCA.pem -CAkey ~/myCA/myCA.key -CAcreateserial -out example2.crt -days 365 -sha256
+
+.sample config file
+----
+include::example2.ext[]
+----
