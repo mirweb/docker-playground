@@ -103,3 +103,10 @@ Infos
 ----
 include::example2.ext[]
 ----
+
+== using mkcert for development certificates
+
+see https://github.com/FiloSottile/mkcert[mkcert github site]
+
+    mkcert --install
+    mkcert "hostname.localdomain" localhost
