@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    volumes: 
+      - "jenkins_home:/var/jenkins_home"
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.jenkins.rule=Host(`jenkins.wils`)"
+      - "traefik.http.services.jenkins.loadbalancer.server.port=8080"
+
+volumes: 
+  jenkins_home:
+networks: 
+  web: 
+    external: 
+      name: web

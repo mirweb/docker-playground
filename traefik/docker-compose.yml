@@ -13,6 +13,9 @@ services:
       - "443:443"
       # The Web UI (enabled by --api.insecure=true)
       - "8080:8080"
+    networks:
+      - web
+      - default
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
@@ -25,5 +28,11 @@ services:
   whoami:
     # A container that exposes an API to show its IP address
     image: containous/whoami
+    networks:
+      - web
     labels:
       - "traefik.http.routers.whoami.rule=Path(`/whoami`)"
+networks: 
+  web: 
+    external: 
+      name: web

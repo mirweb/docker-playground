@@ -1,0 +1,10 @@
+= Run jenkins via docker-compose
+
+- jenkins and traefik has to be in same docker network (create by hand)
+- use extra host for jenkins (alias), easier as proxy configuration
+
+.docker-compose.yml
+[source,yml]
+----
+include::docker-compose.yml[]
+----
