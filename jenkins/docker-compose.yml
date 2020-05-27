@@ -5,12 +5,14 @@ services:
     image: jenkins/jenkins:lts
     volumes: 
       - "jenkins_home:/var/jenkins_home"
+    environment: 
+      - JENKINS_OPTS="--prefix=/jenkins"
     networks:
       - web
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.http.routers.jenkins.rule=Host(`jenkins.wils`)"
+      - "traefik.http.routers.jenkins.rule=PathPrefix(`/jenkins/`)"
       - "traefik.http.services.jenkins.loadbalancer.server.port=8080"
 
 volumes: 

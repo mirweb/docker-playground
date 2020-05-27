@@ -4,3 +4,6 @@ tls:
       defaultCertificate:
         certFile: /traefik/ssl/traefik.crt
         keyFile: /traefik/ssl/traefik.key
+  certificates:
+    - certFile: /traefik/ssl/traefik.crt
+      keyFile: /traefik/ssl/traefik.key

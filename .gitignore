@@ -4,3 +4,4 @@ httpd/conf/server.crt
 httpd/conf/server.csr
 httpd/server.ext
 traefik/run/
+jenkins/run/
