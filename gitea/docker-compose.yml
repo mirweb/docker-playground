@@ -7,7 +7,7 @@ services:
       - "gitea_data:/data"
     ports: 
       - "10022:22"
-#      - "3000:3000"
+      - "3000:3000"
     environment: 
       - ROOT_URL="https://localhost/git/"
     networks:
