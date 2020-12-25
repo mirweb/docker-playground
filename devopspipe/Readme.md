@@ -4,6 +4,7 @@
 
 Common devops pipeline with 
 * [gitea](https://gitea.com) as git repository
+* [jenkins](https://www.jenkins.io) as build server
 * [nginx](http://nginx.org) as simple reverse proxy
 
 ## Running & Maintaining
@@ -21,4 +22,17 @@ docker-compose logs -f
 
 ## Maintaing gitea
 
-### Changing settings 
+### Changing settings in app.ini
+
+* attach to running container, go to conf folder, open app.ini
+```
+[0] %docker-compose exec gitea bash
+bash-5.0# cd /data/gitea/conf/
+bash-5.0# vi app.ini 
+```
+* change for example ROOT_URL
+
+## Maintaining jenkins
+
+* initial password can be find in logs at first start
+* or at /var/jenkins_home/secrets/initialAdminPassword in startet container

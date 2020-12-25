@@ -10,6 +10,12 @@ services:
       - "3000:3000"
     environment: 
       - ROOT_URL="http://localhost:3000"
+  jenkins:
+      image: jenkins/jenkins:lts
+      volumes: 
+        - "jenkins_data:/var/jenkins_home"
+      environment: 
+        - JENKINS_OPTS="--prefix=/jenkins"
   nginx:
     image: nginx:latest
     ports: 
@@ -21,3 +27,4 @@ services:
 
 volumes: 
   gitea_data:
+  jenkins_data:
