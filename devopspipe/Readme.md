@@ -5,7 +5,7 @@
 Common devops pipeline with 
 * [gitea](https://gitea.com) as git repository
 * [jenkins](https://www.jenkins.io) as build server
-* [nginx](http://nginx.org) as simple reverse proxy
+* [apache httpd](https://httpd.apache.org) as reverse proxy
 
 ## Running & Maintaining
 
