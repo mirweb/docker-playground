@@ -11,23 +11,30 @@ services:
     environment: 
       - ROOT_URL="http://localhost:3000"
   jenkins:
-      image: jenkins/jenkins:lts
-      volumes: 
-        - "jenkins_data:/var/jenkins_home"
-      environment: 
-        - JENKINS_OPTS="--prefix=/jenkins"
+    image: jenkins/jenkins:lts
+    volumes: 
+      - "jenkins_data:/var/jenkins_home"
+    environment: 
+      - JENKINS_OPTS="--prefix=/jenkins"
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:latest
+    ports:
+      - 8081:8081
+      - 8082:8082
+    volumes:
+      - artifactory_data:/var/opt/jfrog/artifactory
+      
   httpd:
-      image: httpd:2.4
-      ports: 
-          - 80:80
-      #    - 8443:443
-      volumes: 
-          - ./htdocs:/usr/local/apache2/htdocs/
-          - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
-          - ./conf/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
-
-
+    image: httpd:2.4
+    ports: 
+        - 80:80
+    #    - 8443:443
+    volumes: 
+        - ./htdocs:/usr/local/apache2/htdocs/
+        - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+        - ./conf/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
 
 volumes: 
   gitea_data:
   jenkins_data:
+  artifactory_data:

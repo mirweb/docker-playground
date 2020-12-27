@@ -6,6 +6,7 @@ Common devops pipeline with
 * [gitea](https://gitea.com) as git repository
 * [jenkins](https://www.jenkins.io) as build server
 * [apache httpd](https://httpd.apache.org) as reverse proxy
+* [artifactory](https://jfrog.com/open-source/) as repository backend
 
 ## Running & Maintaining
 
