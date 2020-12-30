@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  archiva:
+    image: xetusoss/archiva:latest
+    ports: 
+      - "8888:8080"
+    volumes:
+      - type: volume
+        source: archiva_data
+        target: /archiva-data
+
+volumes:
+  archiva_data:

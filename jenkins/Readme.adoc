@@ -1,10 +1,1 @@
-= Run jenkins via docker-compose
 
-- jenkins and traefik has to be in same docker network (create by hand)
-- https://github.com/jenkinsci/docker/blob/master/README.md[docker docs from jenkins]
-
-.docker-compose.yml
-[source,yml]
-----
-include::docker-compose.yml[]
-----
