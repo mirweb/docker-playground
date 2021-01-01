@@ -14,15 +14,27 @@ services:
     image: jenkins/jenkins:lts
     volumes: 
       - "jenkins_data:/var/jenkins_home"
+      - /var/run/docker.sock:/var/run/docker.sock:rw
     environment: 
       - JENKINS_OPTS="--prefix=/jenkins"
-  artifactory:
-    image: docker.bintray.io/jfrog/artifactory-oss:latest
-    ports:
-      - 8081:8081
-      - 8082:8082
+  
+  nexus:
+    image: sonatype/nexus3:latest
+    ports: 
+      - "8081:8081"
+      - "8082:8082"
     volumes:
-      - artifactory_data:/var/opt/jfrog/artifactory
+      - nexus_data:/nexus-data
+    environment:
+      - NEXUS_CONTEXT=nexus
+
+  # artifactory:
+  #   image: docker.bintray.io/jfrog/artifactory-oss:latest
+  #   ports:
+  #     - 8081:8081
+  #     - 8082:8082
+  #   volumes:
+  #     - artifactory_data:/var/opt/jfrog/artifactory
       
   httpd:
     image: httpd:2.4
@@ -37,4 +49,5 @@ services:
 volumes: 
   gitea_data:
   jenkins_data:
-  artifactory_data:
+  nexus_data:
+#  artifactory_data:

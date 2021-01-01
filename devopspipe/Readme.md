@@ -6,7 +6,7 @@ Common devops pipeline with
 * [gitea](https://gitea.com) as git repository
 * [jenkins](https://www.jenkins.io) as build server
 * [apache httpd](https://httpd.apache.org) as reverse proxy
-* [artifactory](https://jfrog.com/open-source/) as repository backend
+* [Nexus Doc](https://help.sonatype.com/repomanager3) 
 
 ## Running & Maintaining
 
@@ -18,7 +18,7 @@ docker-compose up -d
 Following standard logs
 
 ```bash
-docker-compose logs -f
+docker-compose logs -f {service eg gitea}
 ```
 
 ## Maintaing gitea
