@@ -6,19 +6,26 @@ Common devops pipeline with
 * [gitea](https://gitea.com) as git repository
 * [jenkins](https://www.jenkins.io) as build server
 * [apache httpd](https://httpd.apache.org) as reverse proxy
-* [Nexus Doc](https://help.sonatype.com/repomanager3) 
+* [Nexus Doc](https://help.sonatype.com/repomanager3) as maven repo and docker registry
 
 ## Running & Maintaining
 
-For starting services 
+* For starting services 
 
 ```bash
 docker-compose up -d
 ```
-Following standard logs
+
+* Following standard logs
 
 ```bash
 docker-compose logs -f {service eg gitea}
+```
+
+* connecting to standard shell in container
+
+```bash
+docker-compose exec {service} bash
 ```
 
 ## Maintaing gitea
@@ -38,4 +45,6 @@ bash-5.0# vi app.ini
 * initial password can be find in logs at first start
 * or at /var/jenkins_home/secrets/initialAdminPassword in startet container
 
-## Maintaining artifactory 
+## Maintaining nexus 
+
+* start password is under /nexus-data/admin.password
