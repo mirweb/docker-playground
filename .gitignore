@@ -3,5 +3,6 @@ httpd/conf/server.key
 httpd/conf/server.crt
 httpd/conf/server.csr
 httpd/server.ext
+httpd/logs
 traefik/run/
 jenkins/run/

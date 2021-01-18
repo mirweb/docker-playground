@@ -8,7 +8,9 @@ services:
             - 8443:443
         volumes: 
             - ./htdocs:/usr/local/apache2/htdocs/
+            - ./logs:/usr/local/apache2/logs/
             - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
             - ./conf/extra/httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf
+            - ./conf/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
             - ./conf/server.key:/usr/local/apache2/conf/server.key
             - ./conf/server.crt:/usr/local/apache2/conf/server.crt
