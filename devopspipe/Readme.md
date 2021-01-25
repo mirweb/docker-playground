@@ -44,6 +44,7 @@ bash-5.0# vi app.ini
 
 * initial password can be find in logs at first start
 * or at /var/jenkins_home/secrets/initialAdminPassword in startet container
+* Dockerfile for setup /var/run/docker.sock taken from [github repo](https://github.com/jareddlc/jenkins-with-docker-socket/blob/master/lts/Dockerfile)
 
 ## Maintaining nexus 
 
