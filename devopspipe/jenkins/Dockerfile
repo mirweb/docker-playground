@@ -1,6 +1,6 @@
 FROM jenkins/jenkins:lts
 
-LABEL maintainer="mirko.weber@siltronic.com"
+LABEL maintainer="mirko@wils.tk"
 
 ARG USER_JENKINS=jenkins
 ARG USER_ROOT=root
