@@ -1,0 +1,17 @@
+---
+version: '3'
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server
+    container_name: code-server
+    environment:
+      - TZ=Europe/London
+      - DEFAULT_WORKSPACE=/config/workspace #optional
+      - DOCKER_MODS=linuxserver/mods:code-server-docker|linuxserver/mods:code-server-java11|linuxserver/mods:code-server-zsh
+    volumes:
+      - "code-server_config:/config"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    ports:
+      - 8443:8443
+volumes:
+  code-server_config:
