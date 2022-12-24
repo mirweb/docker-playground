@@ -1,2 +1,2 @@
 terminal:
-    image:ubuntu
+    image: ubuntu
